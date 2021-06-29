@@ -41,6 +41,16 @@ Metrics/ModuleLength:
     - "dev-cmd/bottle.rb"
     - "test/**/*"
 
+Naming/InclusiveLanguage:
+  FlaggedTerms:
+    whitelist:
+      # For an option passed to `srb` in dev-cmd/typecheck.rb
+      AllowedRegex: "--error-white-list"
+    # TODO: If possible, make this stricter. Some instances may be unavoidable,
+    # such as sqlite_master in unpack_strategy/fossil.rb but these can be
+    # handled using AllowedRegex.
+    master:
+
 Naming/PredicateName:
   # Can't rename these.
   AllowedMethods:
