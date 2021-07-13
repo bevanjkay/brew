@@ -23,8 +23,8 @@ module Cask
     attr_predicate :appcast?, :audit_homepage?, :new_cask?, :strict?, :online?, :token_conflicts?
 
     def initialize(cask, appcast: nil, audit_homepage: nil, download: nil,
-                  quarantine: nil, token_conflicts: nil, online: nil,
-                  strict: nil, new_cask: nil)
+                   quarantine: nil, token_conflicts: nil, online: nil,
+                   strict: nil, new_cask: nil)
 
       # `new_cask` implies `online` and `strict`
       online = new_cask if online.nil?
@@ -745,7 +745,7 @@ module Cask
       check_url_for_https_availability(cask.appcast, "appcast URL", check_content: true) if cask.appcast && appcast?
 
       return unless cask.homepage
-      return if !audit_homepage?
+      return unless audit_homepage?
 
       check_url_for_https_availability(cask.homepage,
                                        "homepage URL",

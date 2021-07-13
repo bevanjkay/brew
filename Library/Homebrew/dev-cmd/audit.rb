@@ -213,7 +213,7 @@ module Homebrew
         *audit_casks,
         download:              nil,
         appcast:               args.appcast?,
-        audit_homepage:         args.audit_homepage?,
+        audit_homepage:        args.audit_homepage?,
         online:                args.online?,
         strict:                args.strict?,
         new_cask:              args.new_cask?,

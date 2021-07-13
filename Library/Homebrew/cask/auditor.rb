@@ -36,7 +36,7 @@ module Cask
         any_named_args:        any_named_args,
         language:              language,
         display_passes:        display_passes,
-        display_failures_only: display_failures_only
+        display_failures_only: display_failures_only,
       ).audit
     end
 
@@ -141,7 +141,7 @@ module Cask
         new_cask:        @audit_new_cask,
         token_conflicts: @audit_token_conflicts,
         download:        @audit_download,
-        quarantine:      @quarantine
+        quarantine:      @quarantine,
       )
       audit.run!
       audit
