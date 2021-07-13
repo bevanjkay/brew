@@ -17,6 +17,8 @@ module Cask
                  description: "Audit the downloaded file"
           switch "--[no-]appcast",
                  description: "Audit the appcast"
+          switch "--[no-]audit-homepage",
+                 description: "Audit the homepage"
           switch "--[no-]token-conflicts",
                  description: "Audit for token conflicts"
           switch "--[no-]strict",
@@ -48,6 +50,7 @@ module Cask
           *casks,
           download:              args.download?,
           appcast:               args.appcast?,
+          audit_homepage:        args.audit_homepage?,
           online:                args.online?,
           strict:                args.strict?,
           new_cask:              args.new_cask?,
@@ -69,6 +72,7 @@ module Cask
         *casks,
         download: nil,
         appcast: nil,
+        audit_homepage: nil,
         online: nil,
         strict: nil,
         new_cask: nil,
@@ -82,6 +86,7 @@ module Cask
         options = {
           audit_download:        download,
           audit_appcast:         appcast,
+          audit_homepage:        audit_homepage,
           audit_online:          online,
           audit_strict:          strict,
           audit_new_cask:        new_cask,

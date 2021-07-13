@@ -45,6 +45,8 @@ module Homebrew
                           "`--strict` and `--online`."
       switch "--[no-]appcast",
              description: "Audit the appcast."
+      switch "--[no-]audit-homepage",
+             description: "Audit the homepage."
       switch "--token-conflicts",
              description: "Audit for token conflicts."
       flag   "--tap=",
@@ -211,6 +213,7 @@ module Homebrew
         *audit_casks,
         download:              nil,
         appcast:               args.appcast?,
+        audit_homepage:         args.audit_homepage?,
         online:                args.online?,
         strict:                args.strict?,
         new_cask:              args.new_cask?,

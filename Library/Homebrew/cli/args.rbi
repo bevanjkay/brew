@@ -7,6 +7,9 @@ module Homebrew
       def HEAD?; end
 
       sig { returns(T::Boolean) }
+      def homepage?; end
+
+      sig { returns(T::Boolean) }
       def include_test?; end
 
       sig { returns(T::Boolean) }

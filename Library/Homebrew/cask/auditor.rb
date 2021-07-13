@@ -12,6 +12,7 @@ module Cask
       cask,
       audit_download: nil,
       audit_appcast: nil,
+      audit_homepage: nil,
       audit_online: nil,
       audit_new_cask: nil,
       audit_strict: nil,
@@ -26,6 +27,7 @@ module Cask
         cask,
         audit_download:        audit_download,
         audit_appcast:         audit_appcast,
+        audit_homepage:        audit_homepage,
         audit_online:          audit_online,
         audit_new_cask:        audit_new_cask,
         audit_strict:          audit_strict,
@@ -34,7 +36,7 @@ module Cask
         any_named_args:        any_named_args,
         language:              language,
         display_passes:        display_passes,
-        display_failures_only: display_failures_only,
+        display_failures_only: display_failures_only
       ).audit
     end
 
@@ -44,6 +46,7 @@ module Cask
       cask,
       audit_download: nil,
       audit_appcast: nil,
+      audit_homepage: nil,
       audit_online: nil,
       audit_strict: nil,
       audit_token_conflicts: nil,
@@ -57,6 +60,7 @@ module Cask
       @cask = cask
       @audit_download = audit_download
       @audit_appcast = audit_appcast
+      @audit_homepage = audit_homepage
       @audit_online = audit_online
       @audit_new_cask = audit_new_cask
       @audit_strict = audit_strict
@@ -132,11 +136,12 @@ module Cask
         cask,
         appcast:         @audit_appcast,
         online:          @audit_online,
+        audit_homepage:  @audit_homepage,
         strict:          @audit_strict,
         new_cask:        @audit_new_cask,
         token_conflicts: @audit_token_conflicts,
         download:        @audit_download,
-        quarantine:      @quarantine,
+        quarantine:      @quarantine
       )
       audit.run!
       audit

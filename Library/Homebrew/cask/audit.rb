@@ -20,11 +20,11 @@ module Cask
 
     attr_reader :cask, :download
 
-    attr_predicate :appcast?, :new_cask?, :strict?, :online?, :token_conflicts?
+    attr_predicate :appcast?, :audit_homepage?, :new_cask?, :strict?, :online?, :token_conflicts?
 
-    def initialize(cask, appcast: nil, download: nil, quarantine: nil,
-                   token_conflicts: nil, online: nil, strict: nil,
-                   new_cask: nil)
+    def initialize(cask, appcast: nil, audit_homepage: nil, download: nil,
+                  quarantine: nil, token_conflicts: nil, online: nil,
+                  strict: nil, new_cask: nil)
 
       # `new_cask` implies `online` and `strict`
       online = new_cask if online.nil?
@@ -32,6 +32,7 @@ module Cask
 
       # `online` implies `appcast` and `download`
       appcast = online if appcast.nil?
+      audit_homepage = online if audit_homepage.nil?
       download = online if download.nil?
 
       # `new_cask` implies `token_conflicts`
@@ -39,6 +40,7 @@ module Cask
 
       @cask = cask
       @appcast = appcast
+      @audit_homepage = audit_homepage
       @download = Download.new(cask, quarantine: quarantine) if download
       @online = online
       @strict = strict
@@ -743,6 +745,7 @@ module Cask
       check_url_for_https_availability(cask.appcast, "appcast URL", check_content: true) if cask.appcast && appcast?
 
       return unless cask.homepage
+      return if !audit_homepage?
 
       check_url_for_https_availability(cask.homepage,
                                        "homepage URL",
